@@ -3,6 +3,29 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
-        disabled: true
+  name:
+    label: Name
+    type: text
+    span: auto
+  slug:
+    label: Slug
+    preset: name
+    span: auto
+  fields:
+    label: Fields
+    type: repeater
+    prompt: Add Field
+    form:
+      fields:
+        name:
+          label: Name
+          type: text
+          span: auto
+        type:
+          label: Type
+          type: dropdown
+          span: auto
+          options:
+            text: Text
+            email: Email
+            textarea: Textarea

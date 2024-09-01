@@ -1,1 +1,4 @@
-v1.0.1: First version of OctoberForms
+v1.0.1:
+  - First version of OctoberForms
+  - create_forms_table.php
+  - create_submissions_table.php

@@ -10,6 +10,7 @@ use Model;
 class Form extends Model
 {
     use \October\Rain\Database\Traits\Validation;
+    use \October\Rain\Database\Traits\Sluggable;
 
     /**
      * @var string table name
@@ -20,4 +21,14 @@ class Form extends Model
      * @var array rules for validation
      */
     public $rules = [];
+
+    /**
+     * @var array slug
+     */
+    protected $slugs = ['slug' => 'name'];
+
+    /**
+     * @var array jsonable fields
+     */
+    protected $jsonable = ['fields'];
 }
