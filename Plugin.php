@@ -16,8 +16,8 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name' => 'OctoberForms',
-            'description' => 'No description provided yet...',
+            'name' => 'October Forms',
+            'description' => 'The easiest way to create forms in October CMS, free and open source. A spiritual successor to the Magic Forms plugin.',
             'author' => 'BlakeJones',
             'icon' => 'icon-leaf'
         ];
@@ -44,10 +44,8 @@ class Plugin extends PluginBase
      */
     public function registerComponents()
     {
-        return []; // Remove this line to activate
-
         return [
-            'BlakeJones\OctoberForms\Components\MyComponent' => 'myComponent',
+            'BlakeJones\OctoberForms\Components\OctoberForm' => 'octoberForm',
         ];
     }
 
