@@ -71,15 +71,29 @@ class Plugin extends PluginBase
      */
     public function registerNavigation()
     {
-        return []; // Remove this line to activate
-
         return [
             'octoberforms' => [
-                'label' => 'OctoberForms',
-                'url' => Backend::url('blakejones/octoberforms/mycontroller'),
-                'icon' => 'icon-leaf',
+                'label' => 'Forms',
+                'url' => Backend::url('blakejones/octoberforms/forms'),
+                'iconSvg' => 'plugins/blakejones/octoberforms/assets/icon.svg',
                 'permissions' => ['blakejones.octoberforms.*'],
                 'order' => 500,
+                'sideMenu' => [
+                    'forms' => [
+                        'label' => 'Forms',
+                        'icon' => 'icon-pencil',
+                        'url' => Backend::url('blakejones/octoberforms/forms'),
+                        // @TODO: Implement permissions
+                        'permissions' => ['blakejones.octoberforms.*'],
+                    ],
+                    'submissions' => [
+                        'label' => 'Submissions',
+                        'icon' => 'icon-envelope',
+                        'url' => Backend::url('blakejones/octoberforms/submissions'),
+                        // @TODO: Implement permissions
+                        'permissions' => ['blakejones.octoberforms.*'],
+                    ]
+                ]
             ],
         ];
     }

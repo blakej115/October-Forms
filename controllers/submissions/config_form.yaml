@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Submission
+
+# Model Form Field configuration
+form: $/blakejones/octoberforms/models/submission/fields.yaml
+
+# Model Class name
+modelClass: BlakeJones\OctoberForms\Models\Submission
+
+# Default redirect location
+defaultRedirect: blakejones/octoberforms/submissions
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: blakejones/octoberforms/submissions/update/:id
+    redirectClose: blakejones/octoberforms/submissions
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: blakejones/octoberforms/submissions
+    redirectClose: blakejones/octoberforms/submissions
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title
