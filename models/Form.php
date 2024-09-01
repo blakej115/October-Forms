@@ -30,5 +30,5 @@ class Form extends Model
     /**
      * @var array jsonable fields
      */
-    protected $jsonable = ['fields'];
+    protected $jsonable = ['notify', 'fields'];
 }

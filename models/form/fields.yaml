@@ -11,9 +11,25 @@ fields:
     label: Slug
     preset: name
     span: auto
+  notify:
+    label: Notify
+    type: repeater
+    span: full
+    prompt: Add Email
+    form:
+      fields:
+        email:
+          label: Email
+          type: email
+          span: auto
+        name:
+          label: Name
+          type: text
+          span: auto
   fields:
     label: Fields
     type: repeater
+    span: full
     prompt: Add Field
     form:
       fields:
@@ -23,9 +39,13 @@ fields:
           span: auto
         type:
           label: Type
-          type: dropdown
+          type: text
           span: auto
-          options:
-            text: Text
-            email: Email
-            textarea: Textarea
+        extra_attributes:
+          label: Extra Attributes
+          type: text
+          span: auto
+        validation:
+          label: Validation
+          type: text
+          span: auto

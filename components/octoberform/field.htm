@@ -1,0 +1,6 @@
+<{{ field.type != 'textarea' ? 'input' : 'textarea' }}
+  {% if 'name="' not in field.extra_attributes %}name="{{ field.name }}"{% endif %}
+  {% if 'type="' not in field.extra_attributes %}type="{{ field.type }}"{% endif %}
+  {% if 'placeholder="' not in field.extra_attributes %}placeholder="{{ field.name }}"{% endif %}
+  {{ field.extra_attributes|raw }}
+>{% if field.type =='textarea' %}</textarea>{% endif %}
