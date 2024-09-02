@@ -1,9 +1,11 @@
 <?php namespace BlakeJones\OctoberForms\Components;
 
-use BlakeJones\OctoberForms\Models\Submission;
 use Cms\Classes\ComponentBase;
-use BlakeJones\OctoberForms\Models\Form;
+use October\Rain\Support\Collection;
 use Flash;
+use Mail;
+use BlakeJones\OctoberForms\Models\Form;
+use BlakeJones\OctoberForms\Models\Submission;
 
 /**
  * OctoberForm Component
@@ -41,7 +43,8 @@ class OctoberForm extends ComponentBase
         ];
     }
 
-    public function getForm() {
+    protected function getForm()
+    {
         return Form::where('slug', $this->property('slug'))->first();
     }
 
@@ -50,10 +53,8 @@ class OctoberForm extends ComponentBase
         return $this->getForm();
     }
 
-    public function onOctoberFormSubmit() {
-        $form = $this->getForm();
-        $data = post();
-
+    protected function saveSubmission($fields, $data)
+    {
         $submission = new Submission;
         
         $submission->data = array_map(function($field) use ($data) {
@@ -61,9 +62,38 @@ class OctoberForm extends ComponentBase
                 'field' => $field['name'],
                 'value' => $data[$field['name']]
             ];
-        }, $form->fields);
+        }, $fields);
 
         $submission->save();
+
+        return $submission;
+    }
+
+    protected function sendNotification($notify, $submission, $formName) {
+        $notify = new Collection($notify);
+
+        $sendTo = $notify->flatMap(function($email) {
+            return [
+                $email['email'] => $email['name']
+            ];
+        })->all();
+
+        $submissionId = $submission->id;
+
+        Mail::send('blakejones.octoberforms:notification', $submission->toArray(), function($message) use ($sendTo, $formName, $submissionId) {
+            $message->to($sendTo);
+            $message->subject($formName . ' - ' . $submissionId);
+        });
+    }
+
+    public function onOctoberFormSubmit()
+    {
+        $form = $this->getForm();
+        $data = post();
+
+        $submission = $this->saveSubmission($form->fields, $data);
+
+        $this->sendNotification($form->notify, $submission, $form->name);
 
         Flash::success('Your ' . $form->name . ' message was sent.');
     }

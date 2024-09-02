@@ -95,4 +95,11 @@ class Plugin extends PluginBase
             ],
         ];
     }
+
+    public function registerMailTemplates()
+    {
+        return [
+            'blakejones.octoberforms:notification' => 'blakejones.octoberforms::mail.notification'
+        ];
+    }
 }
