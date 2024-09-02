@@ -18,6 +18,7 @@ return new class extends Migration
     {
         Schema::create('blakejones_octoberforms_submissions', function(Blueprint $table) {
             $table->id();
+            $table->text('data');
             $table->timestamps();
         });
     }

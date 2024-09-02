@@ -3,6 +3,18 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
-        disabled: true
+  data:
+    label: Data
+    type: datatable
+    span: full
+    adding: false
+    deleting: false
+    columns:
+      field:
+        title: Field
+        type: string
+        readOnly: true
+      value:
+        title: Value
+        type: string
+        readOnly: true

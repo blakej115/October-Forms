@@ -5,10 +5,13 @@
 columns:
   id:
     label: ID
+    type: number
     searchable: true
   name:
     label: Name
+    type: text
     searchable: true
   slug:
     label: Slug
+    type: text
     searchable: true

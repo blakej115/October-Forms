@@ -1,4 +1,4 @@
-<form>
+<form data-request="onOctoberFormSubmit" data-request-flash>
   {% for field in octoberForm.form.fields %}
     {% partial '@field' field=field %}
   {% endfor %}

@@ -20,4 +20,9 @@ class Submission extends Model
      * @var array rules for validation
      */
     public $rules = [];
+
+    /**
+     * @var array jsonable fields
+     */
+    protected $jsonable = ['data'];
 }
